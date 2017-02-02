@@ -1,0 +1,26 @@
+group = 'org.hawkular.apm'
+
+apply plugin: 'application'
+apply from: './libraries.gradle'
+
+mainClassName = 'org.hawkular.apm.data.collector.Main'
+applicationDefaultJvmArgs = ["-Djava.util.logging.config.file=conf/logging.properties"]
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile libraries['commons-cli']
+    compile libraries['vertx']
+    compile libraries['yaml']
+}
+
+distTar {
+    compression = Compression.GZIP
+}
