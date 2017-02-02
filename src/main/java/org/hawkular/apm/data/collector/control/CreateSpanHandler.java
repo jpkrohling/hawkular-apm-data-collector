@@ -14,24 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.hawkular.apm.data.collector.boundary;
+package org.hawkular.apm.data.collector.control;
 
-import org.hawkular.apm.data.collector.control.CreateSpanHandler;
-
-import io.vertx.core.Vertx;
-import io.vertx.ext.web.Router;
-import io.vertx.ext.web.handler.BodyHandler;
+import io.vertx.ext.web.RoutingContext;
 
 /**
  * @author Juraci Paixão Kröhling
  */
-public class DataCollectorServer {
-    public static void start(String bindTo, int port) {
-        Vertx vertx = Vertx.vertx();
-        Router router = Router.router(vertx);
-        router.post("/v2/span").handler(CreateSpanHandler::handle);
-        vertx.createHttpServer()
-                .requestHandler(router::accept)
-                .listen(port, bindTo);
-    }
+public class CreateSpanHandler {
+   public static void handle(RoutingContext routingContext) {
+       routingContext.request().bodyHandler(b -> {
+           // here we would do some validation on the data, like some basic sanity and boundary checks
+           // for now, we just pass it to the next component
+           routingContext.response().setStatusCode(204).end();
+       });
+   }
 }

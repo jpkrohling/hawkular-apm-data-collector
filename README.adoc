@@ -1,7 +1,8 @@
 = Hawkular APM - Backend - Data Collector
 
 This is the data collector interface for the Hawkular APM backend. This is responsible for receiving new data
-from OpenTracing agents and providers, validating it and forwarding it to the appropriate components.
+from OpenTracing agents and providers, validating it and forwarding it to the appropriate components. Alternatively,
+this would publish the data to a bus, so that interested parties would react on this newly arrived data.
 
 == How to build this from the sources
 
