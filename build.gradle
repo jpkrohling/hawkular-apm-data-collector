@@ -17,10 +17,49 @@ repositories {
 
 dependencies {
     compile libraries['commons-cli']
+    compile libraries['grpc']
     compile libraries['vertx']
     compile libraries['yaml']
 }
 
 distTar {
     compression = Compression.GZIP
+}
+
+apply plugin: 'idea'
+idea {
+    module {
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/java")
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/grpc")
+    }
+}
+
+apply plugin: 'com.google.protobuf'
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
+    }
+}
+
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.1.0'
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.0.3"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {
+                option 'enable_deprecated=false'
+            }
+        }
+    }
 }

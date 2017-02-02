@@ -39,6 +39,7 @@ public class Main {
             logger.info(() -> String.format("Hawkular APM Data Collector Health Check started at %s:%s", configuration.getHealthcheckBind(), configuration.getHealthcheckPort()));
         } catch (Throwable t) {
             logger.severe(() -> String.format("Could not start the Hawkular APM Data Collector. Reason: %s", t.getMessage()));
+            t.printStackTrace();
             System.exit(127);
         }
     }

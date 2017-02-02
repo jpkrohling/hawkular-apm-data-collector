@@ -52,9 +52,10 @@ public class ConfigurationResources {
 
     private void prepareCommandLineOptions() {
         Options options = new Options();
-        options.addOption("b", "bind", true, "IP address to bind to");
         options.addOption("p", "port", true, "Port to bind to");
         options.addOption("c", "conf", true, "Configuration file to use");
+        options.addOption("hadph", "data-publisher-host", true, "Hawkular APM Data Publisher Hostname");
+        options.addOption("hadpp", "data-publisher-port", true, "Hawkular APM Data Publisher Port");
         options.addOption("hb", "healthcheck-bind", true, "IP address to bind the health check service to");
         options.addOption("hp", "healthcheck-port", true, "Port to bind the health check service to");
 
@@ -96,11 +97,19 @@ public class ConfigurationResources {
         }
 
         if (cmd.hasOption("hb")) {
-            configuration.setHealthcheckBind(cmd.getOptionValue("b"));
+            configuration.setHealthcheckBind(cmd.getOptionValue("hb"));
         }
 
         if (cmd.hasOption("hp")) {
-            configuration.setHealthcheckPort(Integer.parseInt(cmd.getOptionValue("p")));
+            configuration.setHealthcheckPort(Integer.parseInt(cmd.getOptionValue("hp")));
+        }
+
+        if (cmd.hasOption("hadph")) {
+            configuration.setDataPublisherHostname(cmd.getOptionValue("hadph"));
+        }
+
+        if (cmd.hasOption("hadpp")) {
+            configuration.setDataPublisherPort(Integer.parseInt(cmd.getOptionValue("hadpp")));
         }
     }
 

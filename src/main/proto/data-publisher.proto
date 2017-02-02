@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.hawkular.apm.proto";
+option java_outer_classname = "DataPublisherProto";
+option objc_class_prefix = "DPP";
+
+package org.hawkular.apm;
+
+service DataPublisher {
+  // Sends a greeting
+  rpc Publish (SpanRequest) returns (Empty) {}
+}
+
+message SpanRequest {
+  string name = 1;
+}
+
+message Empty {
+}
+

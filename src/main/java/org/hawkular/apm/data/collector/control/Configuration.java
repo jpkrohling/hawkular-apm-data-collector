@@ -21,8 +21,12 @@ package org.hawkular.apm.data.collector.control;
  */
 public class Configuration {
     private String bind;
-    private String healthcheckBind;
     private int port;
+
+    private String dataPublisherHostname;
+    private int dataPublisherPort;
+
+    private String healthcheckBind;
     private int healthcheckPort;
 
     public String getBind() {
@@ -33,20 +37,36 @@ public class Configuration {
         this.bind = bind;
     }
 
-    public String getHealthcheckBind() {
-        return healthcheckBind;
-    }
-
-    public void setHealthcheckBind(String healthcheckBind) {
-        this.healthcheckBind = healthcheckBind;
-    }
-
     public int getPort() {
         return port;
     }
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    public String getDataPublisherHostname() {
+        return dataPublisherHostname;
+    }
+
+    public void setDataPublisherHostname(String dataPublisherHostname) {
+        this.dataPublisherHostname = dataPublisherHostname;
+    }
+
+    public int getDataPublisherPort() {
+        return dataPublisherPort;
+    }
+
+    public void setDataPublisherPort(int dataPublisherPort) {
+        this.dataPublisherPort = dataPublisherPort;
+    }
+
+    public String getHealthcheckBind() {
+        return healthcheckBind;
+    }
+
+    public void setHealthcheckBind(String healthcheckBind) {
+        this.healthcheckBind = healthcheckBind;
     }
 
     public int getHealthcheckPort() {

@@ -20,7 +20,6 @@ import org.hawkular.apm.data.collector.control.CreateSpanHandler;
 
 import io.vertx.core.Vertx;
 import io.vertx.ext.web.Router;
-import io.vertx.ext.web.handler.BodyHandler;
 
 /**
  * @author Juraci Paixão Kröhling
@@ -29,7 +28,7 @@ public class DataCollectorServer {
     public static void start(String bindTo, int port) {
         Vertx vertx = Vertx.vertx();
         Router router = Router.router(vertx);
-        router.post("/v2/span").handler(CreateSpanHandler::handle);
+        router.post("/v2/span").handler(new CreateSpanHandler()::handle);
         vertx.createHttpServer()
                 .requestHandler(router::accept)
                 .listen(port, bindTo);

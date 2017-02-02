@@ -3,3 +3,6 @@ bind: localhost
 
 healthcheckPort: 8090
 healthcheckBind: localhost
+
+dataPublisherHostname: localhost
+dataPublisherPort: 8081
