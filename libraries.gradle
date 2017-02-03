@@ -8,6 +8,7 @@ ext {
                     "io.grpc:grpc-protobuf:${grpcVersion}",
                     "io.grpc:grpc-stub:${grpcVersion}"
             ],
+            'hystrix'                   : 'com.netflix.hystrix:hystrix-core:1.5.9',
             'vertx'                     : 'io.vertx:vertx-web:3.3.3',
             'yaml'                      : 'com.esotericsoftware.yamlbeans:yamlbeans:1.09',
     ]

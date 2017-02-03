@@ -18,6 +18,7 @@ repositories {
 dependencies {
     compile libraries['commons-cli']
     compile libraries['grpc']
+    compile libraries['hystrix']
     compile libraries['vertx']
     compile libraries['yaml']
 }
